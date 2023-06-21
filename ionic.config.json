@@ -1,0 +1,7 @@
+{
+  "name": "sellro-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
