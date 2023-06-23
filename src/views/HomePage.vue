@@ -1,44 +1,24 @@
 <template>
     <ion-page>
-        <ion-header :translucent="true">
-            <ion-toolbar>
-                <ion-title>Blank</ion-title>
-            </ion-toolbar>
-        </ion-header>
-
         <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large">Blank</ion-title>
-                </ion-toolbar>
-            </ion-header>
-
             <div id="container">
-                <strong>Ready to create an app?</strong>
-                <p>
-                    Start with Ionic
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ionicframework.com/docs/components"
-                        >UI Components</a
-                    >
-                </p>
+                <strong>Home page</strong>
             </div>
         </ion-content>
+
+        <ion-footer style="padding: 6px; background: #1f1f1f">
+            <BottomBar />
+        </ion-footer>
     </ion-page>
 </template>
 
 <script setup lang="ts">
-import {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-} from "@ionic/vue";
+import { IonContent, IonPage, IonFooter } from "@ionic/vue";
 import { onMounted, ref } from "vue";
-import { fetchData } from "@/composables/api";
+
+import BottomBar from "@/components/layout/BottomBar.vue";
+
+import { fetchPost } from "@/composables/api";
 import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
 
 let responseData = ref(null) as any;
@@ -54,7 +34,7 @@ onMounted(async () => {
     };
 
     try {
-        responseData = await fetchData(apiUrl, options);
+        responseData = await fetchPost(apiUrl, options);
         console.log(responseData);
     } catch (error: any) {
         console.error(error.message);

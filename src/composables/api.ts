@@ -1,6 +1,6 @@
 import { Post } from "@/interfaces/post";
 
-export const fetchData = async (
+export const fetchPost = async (
     apiUrl: string,
     options: object
 ): Promise<Post> => {
