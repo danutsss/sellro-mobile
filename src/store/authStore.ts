@@ -57,6 +57,9 @@ export const useAuthStore = defineStore({
             const options: object = {
                 method: "GET",
                 headers: {
+                    Authorization: `Bearer ${this.currentUser?.extra.authToken}`,
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
                     "X-AppApiToken":
                         "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
                     "X-AppType": "docs",

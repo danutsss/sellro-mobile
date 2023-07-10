@@ -48,8 +48,8 @@ const email = ref("");
 const password = ref("");
 const authStore = useAuthStore();
 
-const login = async () => {
-    return await authStore.login(email.value, password.value);
+const login = () => {
+    return authStore.login(email.value, password.value);
 };
 </script>
 
