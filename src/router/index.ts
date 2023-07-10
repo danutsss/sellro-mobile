@@ -6,8 +6,6 @@ import {
 } from "vue-router";
 import { useAuthStore } from "@/store/authStore";
 
-import HomePage from "../views/HomePage.vue";
-
 const authGuard = (
     to: RouteLocationNormalized,
     from: RouteLocationNormalized,
@@ -32,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/home",
         name: "Home",
-        component: HomePage,
+        component: () => import("../views/HomePage.vue"),
     },
     {
         path: "/favorites",
@@ -40,18 +38,13 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("../views/FavoritesPage.vue"),
     },
     {
-        path: "/auth",
-        name: "Authentication",
-        component: () => import("../views/auth/AuthPage.vue"),
-    },
-    {
         path: "/profile",
         name: "Profile",
         component: () => import("../views/ProfilePage.vue"),
-        meta: {
-            requiresAuth: true,
-        },
-        beforeEnter: authGuard,
+        // meta: {
+        //     requiresAuth: true,
+        // },
+        // beforeEnter: authGuard,
     },
 ];
 
