@@ -1,11 +1,82 @@
 <template>
     <ion-page>
         <ion-content :fullscreen="true">
-            <div class="p-6">
-                <h1 class="font-sans text-4xl font-bold">Bun venit pe SELL!</h1>
+            <div class="p-5">
+                <h1
+                    v-if="!authStore.isAuthenticated"
+                    class="font-sans text-4xl font-bold">
+                    Bun venit pe SELL!
+                </h1>
+                <h1 v-else class="font-sans text-3xl font-bold ml-2">
+                    Bine ai venit,
+                    {{ authStore.currentUser?.result.name }}!
+                </h1>
             </div>
 
-            <div v-if="authStore.isLoggedIn">content if logged in</div>
+            <div v-if="authStore.isAuthenticated" class="px-5">
+                <div id="menu">
+                    <div class="mb-4">
+                        <span class="font-bold text-xl">Meniu anunturi</span>
+                        <ul>
+                            <li class="border-b border-gray-300 py-2">
+                                <router-link
+                                    to="/profile/posts/list"
+                                    class="flex items-center">
+                                    <ion-icon
+                                        :icon="list"
+                                        class="mr-2"></ion-icon>
+                                    Anunturi active
+                                </router-link>
+                            </li>
+                            <li class="border-b border-gray-300 py-2">
+                                <router-link
+                                    to="/profile/posts/pending-approval"
+                                    class="flex items-center">
+                                    <ion-icon
+                                        :icon="hourglass"
+                                        class="mr-2"></ion-icon>
+                                    Anunturi moderate
+                                </router-link>
+                            </li>
+                            <li class="border-b border-gray-300 py-2">
+                                <router-link
+                                    to="/profile/posts/archived"
+                                    class="flex items-center">
+                                    <ion-icon
+                                        :icon="archive"
+                                        class="mr-2"></ion-icon>
+                                    Anunturi arhivate
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="font-bold text-xl">Meniu cont</span>
+                        <ul>
+                            <li class="border-b border-gray-300 py-2">
+                                <router-link
+                                    to="/profile/settings"
+                                    class="flex items-center">
+                                    <ion-icon
+                                        :icon="personCircle"
+                                        class="mr-2"></ion-icon>
+                                    Contul meu
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <ion-button
+                        class="m-3 text-white"
+                        fill="outline"
+                        @click="authStore.logout">
+                        <p class="font-bold">Deconecteaza-te</p>
+                    </ion-button>
+                </div>
+            </div>
             <div v-else class="flex flex-col">
                 <SocialAuth />
 
@@ -36,7 +107,7 @@
             </div>
         </ion-content>
 
-        <ion-footer style="padding: 6px; background: #1f1f1f">
+        <ion-footer class="p-2 bg-[#1f1f1f]">
             <BottomBar />
         </ion-footer>
     </ion-page>
@@ -45,7 +116,7 @@
 <script setup lang="ts">
 import { IonContent, IonPage, IonFooter, IonButton } from "@ionic/vue";
 import { useAuthStore } from "@/store/authStore";
-
+import { archive, hourglass, list, personCircle } from "ionicons/icons";
 import { Transition, ref } from "vue";
 
 import BottomBar from "@/components/layout/BottomBar.vue";
