@@ -6,7 +6,7 @@
             </div>
         </ion-content>
 
-        <ion-footer style="padding: 6px; background: #1f1f1f">
+        <ion-footer class="p-2 bg-[#1f1f1f]">
             <BottomBar />
         </ion-footer>
     </ion-page>
