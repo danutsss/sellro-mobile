@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonButtons, IonButton, IonIcon, IonNavLink } from "@ionic/vue";
+import { IonButtons, IonButton, IonIcon } from "@ionic/vue";
 import { add, person, home, heart, chatbubble } from "ionicons/icons";
 import FavoritesPage from "@/views/FavoritesPage.vue";
 
