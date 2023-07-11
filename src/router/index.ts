@@ -18,7 +18,7 @@ const authGuard = (
         next();
     } else {
         // User is not authenticated, redirect to the login page
-        next("/auth");
+        next("/profile");
     }
 };
 

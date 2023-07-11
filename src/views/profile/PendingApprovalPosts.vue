@@ -1,8 +1,14 @@
 <template>
     <ion-page>
+        <ion-header>
+            <ion-toolbar>
+                <BackButton :title="'Anunturi moderate'" />
+            </ion-toolbar>
+        </ion-header>
+
         <ion-content :fullscreen="true">
             <div id="container">
-                <strong>Pending approval posts</strong>
+                <strong>Anunturi moderate</strong>
             </div>
         </ion-content>
 
@@ -13,6 +19,13 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonFooter } from "@ionic/vue";
+import {
+    IonContent,
+    IonPage,
+    IonFooter,
+    IonHeader,
+    IonToolbar,
+} from "@ionic/vue";
 import BottomBar from "@/components/layout/BottomBar.vue";
+import BackButton from "@/components/layout/BackButton.vue";
 </script>
