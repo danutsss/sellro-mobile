@@ -30,21 +30,49 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/home",
         name: "Home",
-        component: () => import("../views/HomePage.vue"),
+        component: () => import("@/views/HomePage.vue"),
     },
     {
         path: "/favorites",
         name: "Favorites",
-        component: () => import("../views/FavoritesPage.vue"),
+        component: () => import("@/views/FavoritesPage.vue"),
     },
     {
         path: "/profile",
         name: "Profile",
-        component: () => import("../views/ProfilePage.vue"),
-        // meta: {
-        //     requiresAuth: true,
-        // },
-        // beforeEnter: authGuard,
+        component: () => import("@/views/ProfilePage.vue"),
+    },
+    {
+        path: "/profile/posts/list",
+        component: () => import("@/views/profile/PostsList.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
+    },
+    {
+        path: "/profile/posts/pending-approval",
+        component: () => import("@/views/profile/PendingApprovalPosts.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
+    },
+    {
+        path: "/profile/posts/archived",
+        component: () => import("@/views/profile/ArchivedPosts.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
+    },
+    {
+        path: "/profile/settings",
+        component: () => import("@/views/profile/Settings.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
     },
 ];
 

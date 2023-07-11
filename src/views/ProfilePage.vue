@@ -114,7 +114,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonFooter, IonButton } from "@ionic/vue";
+import { IonContent, IonPage, IonFooter, IonButton, IonIcon } from "@ionic/vue";
 import { useAuthStore } from "@/store/authStore";
 import { archive, hourglass, list, personCircle } from "ionicons/icons";
 import { Transition, ref } from "vue";
