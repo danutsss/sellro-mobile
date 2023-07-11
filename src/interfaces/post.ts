@@ -57,4 +57,17 @@ export interface Post {
             big: string;
         };
     };
+    pictures: {
+        active: number;
+        filename: string;
+        id: number;
+        mime_type: string;
+        position: number;
+        url: {
+            full: string;
+            small: string;
+            medium: string;
+            big: string;
+        };
+    };
 }
