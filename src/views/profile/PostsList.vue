@@ -9,7 +9,7 @@
         <ion-content :fullscreen="true">
             <div id="container">
                 <Suspense>
-                    <Listing />
+                    <ListingList />
                 </Suspense>
             </div>
         </ion-content>
@@ -30,5 +30,5 @@ import {
 } from "@ionic/vue";
 import BottomBar from "@/components/layout/BottomBar.vue";
 import BackButton from "@/components/layout/BackButton.vue";
-import Listing from "@/components/listing/Listing.vue";
+import ListingList from "@/components/listing/ListingList.vue";
 </script>
