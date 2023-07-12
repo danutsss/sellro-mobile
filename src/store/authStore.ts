@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
-import { loginUser } from "@/composables/api";
+import { request } from "@/composables/api";
 import { User } from "@/interfaces/user";
 import { API_URL, API_ENDPOINT_AUTH } from "@/constants";
+import { Options } from "@/interfaces/options";
 
 export const useAuthStore = defineStore({
     id: "auth",
@@ -31,7 +32,7 @@ export const useAuthStore = defineStore({
                 email: email,
                 password: password,
             };
-            const options: object = {
+            const options: Options = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,7 +44,7 @@ export const useAuthStore = defineStore({
                 body: JSON.stringify(body),
             };
 
-            const data: User = await loginUser(apiUrl, options);
+            const data: User = await request<User>(apiUrl, options);
 
             this.user = data;
             this.isLoggedIn = true;
@@ -54,7 +55,7 @@ export const useAuthStore = defineStore({
 
         async logout() {
             const apiUrl: string = `${API_URL}/${API_ENDPOINT_AUTH}/logout/${this.currentUser?.result.id}`;
-            const options: object = {
+            const options: Options = {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${this.currentUser?.extra.authToken}`,
@@ -66,7 +67,7 @@ export const useAuthStore = defineStore({
                 },
             };
 
-            await fetch(apiUrl, options);
+            await request(apiUrl, options);
 
             this.user = null;
             this.isLoggedIn = false;

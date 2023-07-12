@@ -51,11 +51,13 @@ import {
     IonButton,
     IonIcon,
 } from "@ionic/vue";
-import { fetchUserPost, getCityById } from "@/composables/api";
+import { request } from "@/composables/api";
+import { Options } from "@/interfaces/options";
 import { ref } from "vue";
 import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
 import { useAuthStore } from "@/store/authStore";
 import { eye, location } from "ionicons/icons";
+import { Listing } from "@/interfaces/listing";
 
 let listing = ref(null) as any;
 
@@ -75,7 +77,7 @@ Object.keys(params).forEach((key) =>
     apiUrl.searchParams.append(key, params[key])
 );
 
-const options: object = {
+const options: Options = {
     method: "GET",
     headers: {
         Authorization: `Bearer ${authStore.currentUser?.extra.authToken}`,
@@ -93,7 +95,7 @@ const formatPrice = (price: number) => {
     }).format(price);
 };
 
-listing = await fetchUserPost(apiUrl, options);
+listing = await request<Listing>(apiUrl.toString(), options);
 
 console.log(listing);
 </script>

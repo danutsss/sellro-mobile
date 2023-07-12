@@ -15,29 +15,27 @@
 <script setup lang="ts">
 import { IonContent, IonPage, IonFooter } from "@ionic/vue";
 import { onMounted, ref } from "vue";
+import { request } from "@/composables/api";
+import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
+import { Listing } from "@/interfaces/listing";
 
 import BottomBar from "@/components/layout/BottomBar.vue";
-
-import { fetchPost } from "@/composables/api";
-import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
 
 let responseData = ref(null) as any;
 
 onMounted(async () => {
-    const apiUrl: string = `${API_URL}/${API_ENDPOINT_POSTS}`;
-    const options: object = {
-        method: "GET",
-        headers: {
-            "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-            "X-AppType": "docs",
-        },
-    };
+    const url = `${API_URL}/${API_ENDPOINT_POSTS}`;
 
     try {
-        responseData = await fetchPost(apiUrl, options);
-        console.log(responseData);
+        responseData = await request<Listing>(url, {
+            method: "GET",
+            headers: {
+                "X-AppApiToken": "UG0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
+                "X-AppType": "docs",
+            },
+        });
     } catch (error: any) {
-        console.error(error.message);
+        console.log(error);
     }
 });
 </script>
