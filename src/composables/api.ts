@@ -1,84 +1,23 @@
-import { Post } from "@/interfaces/post";
-import { User } from "@/interfaces/user";
+import { Options } from "@/interfaces/options";
 
-export const fetchPost = async (
+export const request = async <T>(
     apiUrl: string,
-    options: object
-): Promise<Post> => {
+    options: Options
+): Promise<T> => {
     try {
         const response = await fetch(apiUrl, options);
 
         if (!response.ok) {
             throw new Error(
-                `Error fetching data from ${apiUrl}. Status: ${response.status}`
+                `Error fetching data from ${apiUrl}\nStatus: ${response.status} | Error: ${response.statusText}`
             );
         }
 
-        const data: Post = await response.json();
-        return data;
-    } catch (error: any) {
-        throw new Error(`Error fetching data from ${apiUrl}. ${error.message}`);
-    }
-};
-
-export const fetchUserPost = async (
-    apiUrl: URL,
-    options: object
-): Promise<Post> => {
-    try {
-        const response = await fetch(apiUrl, options);
-
-        if (!response.ok) {
-            throw new Error(
-                `Error fetching data from ${apiUrl}. Status: ${response.status}`
-            );
-        }
-
-        const data: Post = await response.json();
-        return data;
-    } catch (error: any) {
-        throw new Error(`Error fetching data from ${apiUrl}. ${error.message}`);
-    }
-};
-
-export const getCityById = async (
-    apiUrl: string,
-    options: object
-): Promise<any> => {
-    try {
-        const response = await fetch(apiUrl, options);
-
-        if (!response.ok) {
-            throw new Error(
-                `Error fetching data from ${apiUrl}. Status: ${response.status}`
-            );
-        }
-
-        const data: Post = await response.json();
-        return data;
-    } catch (error: any) {
-        throw new Error(`Error fetching data from ${apiUrl}. ${error.message}`);
-    }
-};
-
-export const loginUser = async (
-    apiUrl: string,
-    options: object
-): Promise<User> => {
-    try {
-        const response = await fetch(apiUrl, options);
-
-        if (!response.ok) {
-            throw new Error(
-                `Error logging in user from ${apiUrl}. Status: ${response.status}`
-            );
-        }
-
-        const data: User = await response.json();
+        const data: T = await response.json();
         return data;
     } catch (error: any) {
         throw new Error(
-            `Error logging in user from ${apiUrl}. ${error.message}`
+            `Error fetching data from ${apiUrl}\nError: ${error.message}`
         );
     }
 };
