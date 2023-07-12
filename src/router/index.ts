@@ -74,6 +74,24 @@ const routes: Array<RouteRecordRaw> = [
         },
         beforeEnter: authGuard,
     },
+    {
+        path: "/:slug/:id",
+        component: () => import("@/views/listing/ListingPage.vue"),
+    },
+    {
+        path: "/messages",
+        component: () => import("@/views/messages/Messages.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
+        children: [
+            {
+                path: ":id",
+                component: () => import("@/views/messages/Message.vue"),
+            },
+        ],
+    },
 ];
 
 const router = createRouter({
