@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonFooter } from "@ionic/vue";
+import { IonPage, IonFooter, IonContent } from "@ionic/vue";
 import { useRoute } from "vue-router";
 
 import BottomBar from "@/components/layout/BottomBar.vue";

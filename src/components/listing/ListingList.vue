@@ -45,29 +45,27 @@
             </div>
         </ion-card-header>
 
-        <div class="p-3">
+        <div class="p-1">
             <ion-button
                 color="primary"
-                class="mr-2 w-full font-bold"
+                class="w-full normal-case"
                 :router-link="`/${post.slug}/${post.id}`">
                 Vizualizare anunt
             </ion-button>
             <ion-button
                 fill="outline"
                 color="primary"
-                class="mr-2 w-full font-bold"
+                class="w-full normal-case"
                 :router-link="`/posts/${post.id}/edit`">
                 Modifica anunt
             </ion-button>
             <ion-button
                 color="warning"
-                class="w-full font-bold"
+                class="w-full normal-case"
                 @click="archiveListing(post.id)">
                 Pune-l offline
             </ion-button>
         </div>
-
-        <ion-card-content class="p-0 mt-2"> </ion-card-content>
     </ion-card>
 </template>
 

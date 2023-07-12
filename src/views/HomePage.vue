@@ -30,7 +30,7 @@ onMounted(async () => {
         responseData = await request<Listing>(url, {
             method: "GET",
             headers: {
-                "X-AppApiToken": "UG0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
+                "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
                 "X-AppType": "docs",
             },
         });
