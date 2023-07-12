@@ -1,4 +1,4 @@
-export interface Post {
+export interface Listing {
     id: number;
     country_code: string;
     user_id: number;
