@@ -129,25 +129,6 @@ const showRegister = ref(false);
 </script>
 
 <style scoped>
-#container {
-    text-align: center;
-
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#container strong {
-    font-size: 20px;
-    line-height: 26px;
-}
-
-#container a {
-    text-decoration: none;
-}
-
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.5s;
