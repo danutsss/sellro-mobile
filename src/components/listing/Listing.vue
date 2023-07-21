@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import ListingContent from "./layout/Content.vue";
 
-const props = defineProps({
+defineProps({
     id: {
         type: String,
         required: true,

@@ -32,7 +32,9 @@ import "./theme/tailwind.css";
 const app = createApp(App);
 const pinia = createPinia();
 
-app.use(IonicVue);
+app.use(IonicVue, {
+    swipeBackEnabled: true,
+});
 app.use(router);
 app.use(pinia);
 
