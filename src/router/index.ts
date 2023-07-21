@@ -44,7 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/profile/posts/list",
-        component: () => import("@/views/profile/PostsList.vue"),
+        component: () => import("@/views/profile/ActiveListings.vue"),
         meta: {
             requiresAuth: true,
         },
@@ -52,7 +52,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/profile/posts/pending-approval",
-        component: () => import("@/views/profile/PendingApprovalPosts.vue"),
+        component: () => import("@/views/profile/PendingApprovalListings.vue"),
         meta: {
             requiresAuth: true,
         },
@@ -60,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/profile/posts/archived",
-        component: () => import("@/views/profile/ArchivedPosts.vue"),
+        component: () => import("@/views/profile/ArchivedListings.vue"),
         meta: {
             requiresAuth: true,
         },

@@ -75,7 +75,6 @@ import {
     IonCardHeader,
     IonCardTitle,
     IonCardSubtitle,
-    IonCardContent,
     IonButton,
     IonIcon,
 } from "@ionic/vue";
