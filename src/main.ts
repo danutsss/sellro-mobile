@@ -34,6 +34,7 @@ const pinia = createPinia();
 
 app.use(IonicVue, {
     swipeBackEnabled: true,
+    mode: "md",
 });
 app.use(router);
 app.use(pinia);
