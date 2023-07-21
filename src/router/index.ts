@@ -108,6 +108,10 @@ const routes: Array<RouteRecordRaw> = [
         },
         beforeEnter: authGuard,
     },
+    {
+        path: "/search",
+        component: () => import("@/views/search/Search.vue"),
+    },
 ];
 
 const router = createRouter({

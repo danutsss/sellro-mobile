@@ -1,5 +1,15 @@
 <template>
     <ion-page>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title class="font-sans">Anunturi</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button fill="clear" router-link="/search">
+                        <ion-icon slot="icon-only" :icon="searchOutline" />
+                    </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
         <ion-content :fullscreen="true">
             <div id="container">
                 <strong>Home page</strong>
@@ -13,27 +23,20 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonFooter } from "@ionic/vue";
-import { onMounted, ref } from "vue";
-import { request } from "@/composables/api";
-import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
-import { Listing } from "@/interfaces/listing";
-import { requestOptions } from "@/composables/requestOptions";
+import {
+    IonContent,
+    IonToolbar,
+    IonIcon,
+    IonPage,
+    IonFooter,
+    IonHeader,
+    IonButtons,
+    IonButton,
+    IonTitle,
+} from "@ionic/vue";
+import { searchOutline } from "ionicons/icons";
 
 import BottomBar from "@/components/layout/BottomBar.vue";
-
-let responseData = ref(null) as any;
-
-onMounted(async () => {
-    const url = `${API_URL}/${API_ENDPOINT_POSTS}`;
-
-    try {
-        responseData = await request<Listing>(url, requestOptions("", "GET"));
-        console.log(responseData);
-    } catch (error: any) {
-        console.log(error);
-    }
-});
 </script>
 
 <style scoped>
