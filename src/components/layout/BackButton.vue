@@ -1,11 +1,10 @@
 <template>
     <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+        <ion-back-button :text="title"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ title }}</ion-title>
 </template>
 <script setup lang="ts">
-import { IonButtons, IonBackButton, IonTitle } from "@ionic/vue";
+import { IonButtons, IonBackButton } from "@ionic/vue";
 
 defineProps({
     title: {
