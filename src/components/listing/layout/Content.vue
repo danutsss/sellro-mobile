@@ -103,7 +103,24 @@
 
     <HorizontalLine />
 
-    <div id="shareListing" class="p-3">
+    <div id="optionsListing" class="p-3">
+        <div id="popoverOptions">
+            <ion-button fill="outline" class="w-full" id="showOptions"
+                >Optiuni anunt</ion-button
+            >
+            <ion-popover trigger="showOptions">
+                <ion-list v-on:click="dismissPopover">
+                    <ion-item button @click="archiveListing(listing.result.id)">
+                        <ion-label>Arhiveaza anuntul</ion-label>
+                    </ion-item>
+                    <ion-item
+                        button
+                        :router-link="`/listing/${listing.result.id}/edit`">
+                        <ion-label>Editeaza anuntul</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-popover>
+        </div>
         <ion-button @click="share" color="primary" class="w-full">
             Distribuie anuntul
         </ion-button>
@@ -115,7 +132,15 @@
 </template>
 
 <script setup lang="ts">
-import { IonIcon, IonChip, IonLabel, IonButton } from "@ionic/vue";
+import {
+    IonIcon,
+    IonChip,
+    IonButton,
+    IonList,
+    IonPopover,
+    IonLabel,
+    IonItem,
+} from "@ionic/vue";
 import { request } from "@/composables/api";
 import { ref } from "vue";
 import { API_ENDPOINT_POSTS, API_URL } from "@/constants";
@@ -191,6 +216,11 @@ const share = async () => {
         url: listing.result.url,
         dialogTitle: `Distribuie anuntul ${listing.result.title}`,
     });
+};
+
+const dismissPopover = async () => {
+    const popover = document.querySelector("ion-popover");
+    return await popover?.dismiss();
 };
 </script>
 

@@ -56,7 +56,7 @@
                 fill="outline"
                 color="primary"
                 class="w-full normal-case"
-                :router-link="`/posts/${post.id}/edit`">
+                :router-link="`/listing/${post.id}/edit`">
                 Modifica anunt
             </ion-button>
             <ion-button
