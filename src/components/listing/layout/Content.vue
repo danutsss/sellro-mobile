@@ -94,44 +94,13 @@
             {{ listing.result.description }}
         </p>
     </div>
-
-    <!--<ion-card
-        v-if="listing.result.user_id === authStore.currentUser?.result.id">
-        <ion-card-header class="border-b text-center">
-            Administreaza anuntul
-        </ion-card-header>
-        <ion-card-content class="flex flex-col mt-3">
-            <ion-button
-                color="primary"
-                class="normal-case"
-                :router-link="`/posts/${listing.result.id}/edit`">
-                Modifica anunt
-            </ion-button>
-            <ion-button
-                fill="outline"
-                color="warning"
-                class="normal-case"
-                @click="archiveListing(listing.result.id)">
-                Arhiveaza anunt
-            </ion-button>
-        </ion-card-content>
-    </ion-card> -->
-
     <HorizontalLine />
 
     <ShareButtons />
 </template>
 
 <script setup lang="ts">
-import {
-    IonIcon,
-    IonButton,
-    IonCard,
-    IonCardHeader,
-    IonCardContent,
-    IonChip,
-    IonLabel,
-} from "@ionic/vue";
+import { IonIcon, IonChip, IonLabel } from "@ionic/vue";
 import { request } from "@/composables/api";
 import { ref } from "vue";
 import { API_ENDPOINT_POSTS, API_URL } from "@/constants";
