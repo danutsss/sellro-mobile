@@ -18,6 +18,7 @@ import { onMounted, ref } from "vue";
 import { request } from "@/composables/api";
 import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
 import { Listing } from "@/interfaces/listing";
+import { requestOptions } from "@/composables/requestOptions";
 
 import BottomBar from "@/components/layout/BottomBar.vue";
 
@@ -27,13 +28,8 @@ onMounted(async () => {
     const url = `${API_URL}/${API_ENDPOINT_POSTS}`;
 
     try {
-        responseData = await request<Listing>(url, {
-            method: "GET",
-            headers: {
-                "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-                "X-AppType": "docs",
-            },
-        });
+        responseData = await request<Listing>(url, requestOptions("", "GET"));
+        console.log(responseData);
     } catch (error: any) {
         console.log(error);
     }

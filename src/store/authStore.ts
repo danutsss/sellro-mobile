@@ -3,6 +3,7 @@ import { request } from "@/composables/api";
 import { User } from "@/interfaces/user";
 import { API_URL, API_ENDPOINT_AUTH } from "@/constants";
 import { Options } from "@/interfaces/options";
+import { requestOptions } from "@/composables/requestOptions";
 
 export const useAuthStore = defineStore({
     id: "auth",
@@ -32,17 +33,11 @@ export const useAuthStore = defineStore({
                 email: email,
                 password: password,
             };
-            const options: Options = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                    "X-AppApiToken":
-                        "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-                    "X-AppType": "docs",
-                },
-                body: JSON.stringify(body),
-            };
+            const options: Options = requestOptions(
+                "",
+                "POST",
+                JSON.stringify(body)
+            );
 
             const data: User = await request<User>(apiUrl, options);
 
@@ -55,17 +50,9 @@ export const useAuthStore = defineStore({
 
         async logout() {
             const apiUrl: string = `${API_URL}/${API_ENDPOINT_AUTH}/logout/${this.currentUser?.result.id}`;
-            const options: Options = {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${this.currentUser?.extra.authToken}`,
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                    "X-AppApiToken":
-                        "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-                    "X-AppType": "docs",
-                },
-            };
+            const options: Options = requestOptions(
+                this.currentUser?.extra.authToken
+            );
 
             await request(apiUrl, options);
 

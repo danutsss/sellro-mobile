@@ -80,6 +80,7 @@ import {
 } from "@ionic/vue";
 import { request } from "@/composables/api";
 import { Options } from "@/interfaces/options";
+import { requestOptions } from "@/composables/requestOptions";
 import { formatPrice, formatDate } from "@/composables/format";
 import { ref } from "vue";
 import { API_URL, API_ENDPOINT_POSTS } from "@/constants";
@@ -106,27 +107,11 @@ Object.keys(params).forEach((key) =>
     apiUrl.searchParams.append(key, params[key])
 );
 
-const options: Options = {
-    method: "GET",
-    headers: {
-        Authorization: `Bearer ${authStore.currentUser?.extra.authToken}`,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-        "X-AppType": "docs",
-    },
-};
-
-const archiveOptions: Options = {
-    method: "PUT",
-    headers: {
-        Authorization: `Bearer ${authStore.currentUser?.extra.authToken}`,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-        "X-AppType": "docs",
-    },
-};
+const options: Options = requestOptions(authStore.currentUser?.extra.authToken);
+const archiveOptions: Options = requestOptions(
+    authStore.currentUser?.extra.authToken,
+    "PUT"
+);
 
 listing = await request<Listing>(apiUrl.toString(), options);
 

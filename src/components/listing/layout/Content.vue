@@ -144,6 +144,7 @@ import {
 import { request } from "@/composables/api";
 import { ref } from "vue";
 import { API_ENDPOINT_POSTS, API_URL } from "@/constants";
+import { requestOptions } from "@/composables/requestOptions";
 import { Listing } from "@/interfaces/listing";
 import { Options } from "@/interfaces/options";
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -166,6 +167,7 @@ const props = defineProps({
     },
 });
 const authStore = useAuthStore();
+console.log(import.meta.env);
 let listing = ref(null) as any;
 
 const listingReqParams: any = {
@@ -173,26 +175,11 @@ const listingReqParams: any = {
     detailed: 1,
 };
 
-const listingReqOpts: Options = {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-        "X-AppType": "docs",
-    },
-};
-
-const archiveOptions: Options = {
-    method: "PUT",
-    headers: {
-        Authorization: `Bearer ${authStore.currentUser?.extra.authToken}`,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-AppApiToken": "UGt0TnB4TkRUWXdvbFAxME5zWlc2SHQ3bEtDU1diODA=",
-        "X-AppType": "docs",
-    },
-};
+const listingReqOpts: Options = requestOptions();
+const archiveOptions: Options = requestOptions(
+    authStore.currentUser?.extra.authToken,
+    "PUT"
+);
 
 const apiUrl = new URL(`${API_URL}/${API_ENDPOINT_POSTS}/${props.id}`);
 Object.keys(listingReqParams).forEach((key) =>
@@ -201,7 +188,6 @@ Object.keys(listingReqParams).forEach((key) =>
 
 listing = await request<Listing>(apiUrl.toString(), listingReqOpts);
 console.log(listing);
-
 const archiveListing = async (listingId: number) => {
     return await request<any>(
         `${API_URL}/${API_ENDPOINT_POSTS}/${listingId}/offline`,
