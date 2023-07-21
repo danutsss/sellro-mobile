@@ -8,7 +8,7 @@
             <ion-icon slot="icon-only" :icon="heart"></ion-icon>
         </ion-button>
 
-        <ion-button shape="round" class="add" router-link="/post/add">
+        <ion-button shape="round" class="add" router-link="/listing/add">
             <ion-icon slot="icon-only" :icon="add"></ion-icon>
         </ion-button>
 

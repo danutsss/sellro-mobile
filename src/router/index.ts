@@ -100,6 +100,14 @@ const routes: Array<RouteRecordRaw> = [
         },
         beforeEnter: authGuard,
     },
+    {
+        path: "/listing/add",
+        component: () => import("@/views/listing/AddListing.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
+    },
 ];
 
 const router = createRouter({
