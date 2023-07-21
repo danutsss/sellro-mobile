@@ -92,6 +92,14 @@ const routes: Array<RouteRecordRaw> = [
             },
         ],
     },
+    {
+        path: "/listing/:id/edit",
+        component: () => import("@/views/listing/EditListing.vue"),
+        meta: {
+            requiresAuth: true,
+        },
+        beforeEnter: authGuard,
+    },
 ];
 
 const router = createRouter({
