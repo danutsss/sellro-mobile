@@ -1,5 +1,5 @@
 <template>
-    <div class="p-5">
+    <div class="p-6">
         <swiper :slides-per-view="3">
             <swiper-slide
                 v-for="category in categories.result.data"
@@ -8,7 +8,7 @@
                     <img
                         :src="category.picture_url"
                         alt="category picture"
-                        class="" />
+                        class="h-10" />
                     <span class="text-xs mt-1">
                         {{ truncate(category.name, 15) }}
                     </span>
