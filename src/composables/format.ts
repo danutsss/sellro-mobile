@@ -1,3 +1,5 @@
+import { Category } from "@/interfaces/categories";
+
 export const formatPrice = (price: number) => {
     return new Intl.NumberFormat("ro-RO", {
         style: "currency",
@@ -13,4 +15,8 @@ export const formatDate = (date: string) => {
         dateStyle: "medium",
         timeStyle: "short",
     }).format(new Date(date));
+};
+
+export const truncate = (text: string, length: number) => {
+    return text.length > length ? text.substr(0, length) + "..." : text;
 };
