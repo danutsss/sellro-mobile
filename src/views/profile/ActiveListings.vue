@@ -8,9 +8,7 @@
 
         <ion-content :fullscreen="true">
             <div id="container">
-                <Suspense>
-                    <ListingList />
-                </Suspense>
+                <ListingList />
             </div>
         </ion-content>
 

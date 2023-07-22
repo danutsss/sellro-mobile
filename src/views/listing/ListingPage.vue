@@ -6,9 +6,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            <Suspense>
-                <Listing :id="id.toString()" />
-            </Suspense>
+            <Listing :id="id.toString()" />
         </ion-content>
 
         <ion-footer class="p-2 bg-[#1f1f1f]">
