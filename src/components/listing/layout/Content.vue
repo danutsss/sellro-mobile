@@ -167,7 +167,6 @@ const props = defineProps({
     },
 });
 const authStore = useAuthStore();
-console.log(import.meta.env);
 let listing = ref(null) as any;
 
 const listingReqParams: any = {
