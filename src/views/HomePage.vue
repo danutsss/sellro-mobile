@@ -12,7 +12,7 @@
         </ion-header>
         <ion-content :fullscreen="true">
             <div id="homeSections" class="p-3">
-                <div id="appStats" class="mb-2">
+                <div id="appStats">
                     <h1
                         class="font-sans text-center text-sm uppercase font-bold mb-2">
                         Statistici platforma
@@ -93,7 +93,7 @@
                 </div>
             </div>
 
-            <Footer class="pt-0 pb-3" />
+            <Footer class="p-3" />
         </ion-content>
 
         <ion-footer class="p-2 bg-[#1f1f1f]">
