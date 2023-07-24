@@ -15,7 +15,7 @@
                 <div id="appStats" class="mb-2">
                     <h1
                         class="font-sans text-center text-sm uppercase font-bold mb-2">
-                        Statistici aplicatie
+                        Statistici platforma
                     </h1>
                     <HorizontalLine />
                     <div class="flex justify-center gap-10 p-6">
@@ -44,14 +44,14 @@
                     </div>
                 </div>
 
-                <div id="categoriesList">
+                <!-- <div id="categoriesList">
                     <h1
                         class="font-sans text-center text-sm uppercase font-bold mb-2">
                         Categorii
                     </h1>
                     <HorizontalLine />
                     <CategoriesList />
-                </div>
+                </div> -->
 
                 <div id="latestPosts">
                     <h1
@@ -92,6 +92,8 @@
                     </div>
                 </div>
             </div>
+
+            <Footer class="pt-0 pb-3" />
         </ion-content>
 
         <ion-footer class="p-2 bg-[#1f1f1f]">
@@ -123,7 +125,11 @@ import {
     megaphoneOutline,
     personOutline,
 } from "ionicons/icons";
-import { API_URL, API_ENDPOINT_HOMESECTIONS } from "@/constants";
+import {
+    API_URL,
+    API_ENDPOINT_HOMESECTIONS,
+    API_ENDPOINT_POSTS,
+} from "@/constants";
 import { request } from "@/composables/api";
 import { requestOptions } from "@/composables/requestOptions";
 import { ref } from "vue";
@@ -132,6 +138,7 @@ import { formatDate, formatPrice } from "@/composables/format";
 import BottomBar from "@/components/layout/BottomBar.vue";
 import HorizontalLine from "@/components/layout/HorizontalLine.vue";
 import CategoriesList from "@/components/home/CategoriesList.vue";
+import Footer from "@/components/layout/Footer.vue";
 
 let latestListings = ref(null) as any;
 let appStats = ref(null) as any;
@@ -139,7 +146,6 @@ let appStats = ref(null) as any;
 const url = new URL(`${API_URL}/${API_ENDPOINT_HOMESECTIONS}`);
 await request(url.toString(), requestOptions("", "GET")).then(
     (response: any) => {
-        console.log(response);
         latestListings = response.result.data.getLatestPosts.data.latest.posts;
         appStats = response.result.data.getStats.data.count;
     }

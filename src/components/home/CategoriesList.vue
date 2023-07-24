@@ -39,6 +39,4 @@ Object.keys(params).forEach((key) =>
 );
 
 const categories: any = await request<Category>(url, requestOptions("", "GET"));
-
-console.log(categories);
 </script>
